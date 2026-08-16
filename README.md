@@ -26,6 +26,11 @@ js/content.js    … 全6章のコンテンツデータ
 js/app.js        … ナビゲーション・復習リスト機能
 ```
 
+## 公開URL
+
+- **本番**: https://kudamono-instructor.vercel.app
+- スマホのブラウザで開き、ホーム画面に追加するとアプリのように使えます
+
 ## ローカルサーバー（任意）
 
 ```bash
