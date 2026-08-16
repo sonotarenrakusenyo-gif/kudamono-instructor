@@ -118,7 +118,7 @@
         ${TEXTBOOK.chapters.map(ch => `
           <div class="chapter-card" data-chapter="${ch.id}">
             <div class="chapter-card-icon">${ch.icon}</div>
-            <div class="chapter-card-num">第${ch.number}章</div>
+            <div class="chapter-card-num">${ch.badge ? `<span class="chapter-badge">${ch.badge}</span> ` : ''}第${ch.number}章</div>
             <div class="chapter-card-title">${ch.title}</div>
             <div class="chapter-card-meta">${ch.sections.length}項目</div>
           </div>
@@ -141,7 +141,7 @@
 
     pageContainer.innerHTML = `
       <div class="chapter-header">
-        <span class="chapter-header-badge">${ch.icon} 第${ch.number}章</span>
+        <span class="chapter-header-badge">${ch.icon} 第${ch.number}章${ch.badge ? ` <span class="chapter-badge-inline">${ch.badge}</span>` : ''}</span>
         <h1>${ch.title}</h1>
       </div>
       <div class="chapter-toc">
@@ -180,7 +180,7 @@
 
     pageContainer.innerHTML = `
       <div class="chapter-header">
-        <span class="chapter-header-badge">${ch.icon} 第${ch.number}章</span>
+        <span class="chapter-header-badge">${ch.icon} 第${ch.number}章${ch.badge ? ` <span class="chapter-badge-inline">${ch.badge}</span>` : ''}</span>
         <h1>${ch.title}</h1>
       </div>
       ${renderSectionBlock(ch, sec, secIdx)}
@@ -318,7 +318,7 @@
         </div>`;
       }
       case 'cards':
-        return `<div class="info-cards">${block.items.map(card => `
+        return `${block.title ? `<h3 class="block-title">${esc(block.title)}</h3>` : ''}<div class="info-cards">${block.items.map(card => `
           <div class="info-card ${card.color}">
             <div class="info-card-icon">${card.icon}</div>
             <div class="info-card-title">${esc(card.title)}</div>
@@ -370,7 +370,7 @@
       ${TEXTBOOK.chapters.map(ch => `
         <div class="toc-chapter">
           <button class="toc-chapter-btn" data-chapter="${ch.id}">
-            ${ch.icon} 第${ch.number}章
+            ${ch.icon} 第${ch.number}章${ch.badge ? ' ★' : ''}
           </button>
           <ul class="toc-sections">
             ${ch.sections.map(sec => `
