@@ -240,6 +240,41 @@ body {
   padding: 2rem 1.5rem 4rem;
 }
 
+/* ===== Furigana (ruby) ===== */
+ruby {
+  ruby-align: center;
+  ruby-position: over;
+}
+
+rt {
+  font-size: 0.52em;
+  font-weight: 500;
+  color: var(--color-primary);
+  letter-spacing: 0;
+  user-select: none;
+}
+
+.section-title ruby rt,
+.chapter-header h1 ruby rt,
+.block-title ruby rt {
+  font-size: 0.48em;
+}
+
+.data-table ruby rt {
+  font-size: 0.5em;
+  line-height: 1.2;
+}
+
+.toc-section-link ruby rt {
+  font-size: 0.45em;
+}
+
+@media (max-width: 480px) {
+  rt {
+    font-size: 0.48em;
+  }
+}
+
 /* ===== Icon Button ===== */
 .icon-btn {
   background: none;

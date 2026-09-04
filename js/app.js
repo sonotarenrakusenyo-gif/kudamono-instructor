@@ -119,7 +119,7 @@
           <div class="chapter-card" data-chapter="${ch.id}">
             <div class="chapter-card-icon">${ch.icon}</div>
             <div class="chapter-card-num">${ch.badge ? `<span class="chapter-badge">${ch.badge}</span> ` : ''}第${ch.number}章</div>
-            <div class="chapter-card-title">${ch.title}</div>
+            <div class="chapter-card-title">${fgPlain(ch.title)}</div>
             <div class="chapter-card-meta">${ch.sections.length}項目</div>
           </div>
         `).join('')}
@@ -142,7 +142,7 @@
     pageContainer.innerHTML = `
       <div class="chapter-header">
         <span class="chapter-header-badge">${ch.icon} 第${ch.number}章${ch.badge ? ` <span class="chapter-badge-inline">${ch.badge}</span>` : ''}</span>
-        <h1>${ch.title}</h1>
+        <h1>${fgPlain(ch.title)}</h1>
       </div>
       <div class="chapter-toc">
         <h3>📋 この章の目次</h3>
@@ -150,7 +150,7 @@
           ${ch.sections.map((sec, i) => `
             <li>
               <a href="#" data-section="${sec.id}">
-                <span>${ch.number}-${i + 1}.</span> ${sec.title}
+                <span>${ch.number}-${i + 1}.</span> ${fgPlain(sec.title)}
                 ${sec.tags ? sec.tags.map(t => `<span class="tag tag-${tagClass(t)}">${t}</span>`).join('') : ''}
               </a>
             </li>
@@ -181,7 +181,7 @@
     pageContainer.innerHTML = `
       <div class="chapter-header">
         <span class="chapter-header-badge">${ch.icon} 第${ch.number}章${ch.badge ? ` <span class="chapter-badge-inline">${ch.badge}</span>` : ''}</span>
-        <h1>${ch.title}</h1>
+        <h1>${fgPlain(ch.title)}</h1>
       </div>
       ${renderSectionBlock(ch, sec, secIdx)}
       <div class="section-nav">
@@ -202,7 +202,7 @@
         <div class="section-header">
           <div class="section-title-wrap">
             <div class="section-number">${ch.number}-${idx + 1}</div>
-            <h2 class="section-title">${sec.title}</h2>
+            <h2 class="section-title">${fgPlain(sec.title)}</h2>
             ${sec.tags ? `<div class="section-tags">${sec.tags.map(t => `<span class="tag tag-${tagClass(t)}">${t}</span>`).join('')}</div>` : ''}
           </div>
           <button class="bookmark-btn ${bookmarked ? 'active' : ''}" data-bookmark="${sec.id}" aria-label="復習リストに追加">
@@ -248,8 +248,8 @@
       return `
         <li class="review-item" data-chapter="${found.chapter.id}" data-section="${id}">
           <div class="review-item-info">
-            <div class="review-item-chapter">第${found.chapter.number}章 ${found.chapter.title}</div>
-            <div class="review-item-title">${found.section.title}</div>
+            <div class="review-item-chapter">第${found.chapter.number}章 ${fgPlain(found.chapter.title)}</div>
+            <div class="review-item-title">${fgPlain(found.section.title)}</div>
           </div>
           <button class="review-remove" data-remove="${id}" aria-label="復習リストから削除">✕</button>
         </li>
@@ -288,50 +288,50 @@
   // ===== Block Renderers =====
   function renderBlock(block) {
     switch (block.type) {
-      case 'lead': return `<p class="block-lead">${block.text}</p>`;
-      case 'paragraph': return `<p class="block-paragraph">${block.text}</p>`;
+      case 'lead': return `<p class="block-lead">${fg(block.text)}</p>`;
+      case 'paragraph': return `<p class="block-paragraph">${fg(block.text)}</p>`;
       case 'callout':
-        return `<div class="callout callout-${block.variant}"><div class="callout-title">${esc(block.title)}</div><div class="callout-text">${block.text}</div></div>`;
+        return `<div class="callout callout-${block.variant}"><div class="callout-title">${fgPlain(block.title)}</div><div class="callout-text">${fg(block.text)}</div></div>`;
       case 'compare':
-        return `<h3 class="block-title">${esc(block.title)}</h3><div class="compare-grid">${block.items.map(item => `
+        return `<h3 class="block-title">${fgPlain(block.title)}</h3><div class="compare-grid">${block.items.map(item => `
           <div class="compare-card ${item.color}">
-            <div class="compare-label">${esc(item.label)}</div>
-            <div class="compare-sublabel">${esc(item.sublabel)}</div>
-            <ul>${item.points.map(p => `<li>${p}</li>`).join('')}</ul>
+            <div class="compare-label">${fgPlain(item.label)}</div>
+            <div class="compare-sublabel">${fgPlain(item.sublabel)}</div>
+            <ul>${item.points.map(p => `<li>${fg(p)}</li>`).join('')}</ul>
           </div>`).join('')}</div>`;
       case 'table':
-        return `<h3 class="block-title">${esc(block.title)}</h3>
+        return `<h3 class="block-title">${fgPlain(block.title)}</h3>
           <div class="data-table-wrap"><table class="data-table ${block.highlight ? 'highlight' : ''}">
-            <thead><tr>${block.headers.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead>
-            <tbody>${block.rows.map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`).join('')}</tbody>
+            <thead><tr>${block.headers.map(h => `<th>${fgPlain(h)}</th>`).join('')}</tr></thead>
+            <tbody>${block.rows.map(row => `<tr>${row.map(cell => `<td>${fg(cell)}</td>`).join('')}</tr>`).join('')}</tbody>
           </table></div>`;
       case 'chart': {
         const max = Math.max(...block.items.map(i => i.value));
-        return `<h3 class="block-title">${esc(block.title)}</h3><div class="bar-chart">
+        return `<h3 class="block-title">${fgPlain(block.title)}</h3><div class="bar-chart">
           ${block.items.map(item => `
             <div class="bar-item">
-              <span class="bar-label">${esc(item.label)}</span>
+              <span class="bar-label">${fgPlain(item.label)}</span>
               <div class="bar-track"><div class="bar-fill" style="width:${(item.value / max * 100).toFixed(1)}%"></div></div>
               <span class="bar-value">${item.value}${block.unit || ''}</span>
-              ${item.note ? `<span class="bar-note">${item.note}</span>` : ''}
+              ${item.note ? `<span class="bar-note">${fg(item.note)}</span>` : ''}
             </div>`).join('')}
         </div>`;
       }
       case 'cards':
-        return `${block.title ? `<h3 class="block-title">${esc(block.title)}</h3>` : ''}<div class="info-cards">${block.items.map(card => `
+        return `${block.title ? `<h3 class="block-title">${fgPlain(block.title)}</h3>` : ''}<div class="info-cards">${block.items.map(card => `
           <div class="info-card ${card.color}">
             <div class="info-card-icon">${card.icon}</div>
-            <div class="info-card-title">${esc(card.title)}</div>
-            <ul class="info-card-effects">${card.effects.map(e => `<li>${e}</li>`).join('')}</ul>
-            ${card.sources ? `<div class="info-card-sources">${card.sources}</div>` : ''}
+            <div class="info-card-title">${fgPlain(card.title)}</div>
+            <ul class="info-card-effects">${card.effects.map(e => `<li>${fg(e)}</li>`).join('')}</ul>
+            ${card.sources ? `<div class="info-card-sources">${fg(card.sources)}</div>` : ''}
           </div>`).join('')}</div>`;
       case 'timeline':
         return `<div class="timeline">${block.items.map((item, i) => `
           <div class="timeline-item">
             <div class="timeline-dot ${item.color}">${i + 1}</div>
             <div class="timeline-content">
-              <div class="timeline-era">${esc(item.era)}</div>
-              <div class="timeline-text">${item.content}</div>
+              <div class="timeline-era">${fgPlain(item.era)}</div>
+              <div class="timeline-text">${fg(item.content)}</div>
             </div>
           </div>`).join('')}</div>`;
       case 'calendar':
@@ -340,25 +340,25 @@
           ${block.months.map(m => `
             <div class="month-block">
               <div class="month-label">${m.month}月</div>
-              <div class="month-fruits">${m.fruits.map(f => `<span class="fruit-tag">${esc(f)}</span>`).join('')}</div>
+              <div class="month-fruits">${m.fruits.map(f => `<span class="fruit-tag">${fgPlain(f)}</span>`).join('')}</div>
             </div>`).join('')}
         </div>`;
       case 'ranking':
         return `<div class="ranking-grid">${block.items.map(item => `
           <div class="ranking-card">
-            <div class="ranking-fruit">🍎 ${esc(item.fruit)}</div>
+            <div class="ranking-fruit">🍎 ${fgPlain(item.fruit)}</div>
             <div class="ranking-ranks">
-              ${item.rank1 ? `<span class="rank-badge gold">🥇 ${item.rank1}</span>` : ''}
-              ${item.rank2 ? `<span class="rank-badge">🥈 ${item.rank2}</span>` : ''}
-              ${item.rank3 ? `<span class="rank-badge">🥉 ${item.rank3}</span>` : ''}
+              ${item.rank1 ? `<span class="rank-badge gold">🥇 ${fg(item.rank1)}</span>` : ''}
+              ${item.rank2 ? `<span class="rank-badge">🥈 ${fg(item.rank2)}</span>` : ''}
+              ${item.rank3 ? `<span class="rank-badge">🥉 ${fg(item.rank3)}</span>` : ''}
             </div>
-            ${item.varieties ? `<div class="ranking-varieties">品種：${item.varieties}</div>` : ''}
+            ${item.varieties ? `<div class="ranking-varieties">品種：${fg(item.varieties)}</div>` : ''}
           </div>`).join('')}</div>`;
       case 'diagram':
-        return `<h3 class="block-title">${esc(block.title)}</h3>${block.svg}`;
+        return `<h3 class="block-title">${fgPlain(block.title)}</h3>${fg(block.svg)}`;
       case 'list':
         const tag = block.ordered ? 'ol' : 'ul';
-        return `<h3 class="block-title">${esc(block.title)}</h3><${tag} class="block-list">${block.items.map(i => `<li>${i}</li>`).join('')}</${tag}>`;
+        return `<h3 class="block-title">${fgPlain(block.title)}</h3><${tag} class="block-list">${block.items.map(i => `<li>${fg(i)}</li>`).join('')}</${tag}>`;
       default: return '';
     }
   }
@@ -376,7 +376,7 @@
             ${ch.sections.map(sec => `
               <li>
                 <a class="toc-section-link ${isBookmarked(sec.id) ? 'bookmarked' : ''}" data-chapter="${ch.id}" data-section="${sec.id}">
-                  ${sec.title.length > 22 ? sec.title.slice(0, 22) + '…' : sec.title}
+                  ${fgPlain(sec.title.length > 22 ? sec.title.slice(0, 22) + '…' : sec.title)}
                   <span class="review-star">⭐</span>
                 </a>
               </li>
@@ -481,6 +481,18 @@
     const d = document.createElement('div');
     d.textContent = str;
     return d.innerHTML;
+  }
+
+  /** プレーンテキスト：エスケープ後に専門用語ふりがな */
+  function fgPlain(str) {
+    if (str == null) return '';
+    return applyFurigana(esc(String(str)));
+  }
+
+  /** HTML を含むテキスト：ふりがなのみ付与 */
+  function fg(str) {
+    if (str == null) return '';
+    return applyFurigana(String(str));
   }
 
   // ===== Init =====
