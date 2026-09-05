@@ -65,13 +65,13 @@ const TEXTBOOK = {
                 <div class="fruit-diagram">
                   <div class="fruit-type true-fruit">
                     <div class="fruit-type-icon">🍊</div>
-                    <h4>真果（しんか）</h4>
-                    <p>子房（しぼう）<strong>のみ</strong>が肥大</p>
+                    <h4>真果</h4>
+                    <p>子房<strong>のみ</strong>が肥大</p>
                     <ul><li>ミカン</li><li>ブドウ</li><li>カキ</li><li>モモ</li><li>トマト</li></ul>
                   </div>
                   <div class="fruit-type false-fruit">
                     <div class="fruit-type-icon">🍎</div>
-                    <h4>偽果（ぎか）</h4>
+                    <h4>偽果</h4>
                     <p>子房<strong>以外</strong>（花托・萼など）が肥大</p>
                     <ul><li>リンゴ・ナシ → 花托が肥大</li><li>イチゴ → 花托が肥大（粒々が本来の果実）</li><li>イチジク → 花嚢が肥大</li></ul>
                   </div>
@@ -250,7 +250,7 @@ const TEXTBOOK = {
               highlight: true,
               rows: [
                 ['アントシアニン', 'ブルーベリー、ブドウ', '眼精疲労軽減、抗酸化'],
-                ['プロアントシアニジン（タンニン）', '柿、ブドウの種', '渋み成分、収れん作用'],
+                ['プロアントシアニジン ※タンニン', '柿、ブドウの種', '渋み成分、収れん作用'],
                 ['ヘスペリジン', '柑橘類の筋・薄皮', '毛細血管強化、血流改善'],
                 ['レスベラトロール', '赤ブドウの果皮', '抗老化、長寿遺伝子活性化']
               ]
@@ -461,9 +461,9 @@ const TEXTBOOK = {
             {
               type: 'cards',
               items: [
-                { title: '比重（重量感）', icon: '⚖️', color: 'blue', effects: ['持ったときずっしり重いもの', '果汁が詰まっている証拠'] },
+                { title: '比重 ※重量感', icon: '⚖️', color: 'blue', effects: ['持ったときずっしり重いもの', '果汁が詰まっている証拠'] },
                 { title: '果皮の張り・ツヤ', icon: '✨', color: 'green', effects: ['シワがない', '色が均一で濃い'] },
-                { title: 'ブルーム（果粉）', icon: '🌫️', color: 'purple', effects: ['ブドウ・ブルーベリー・スモモ・リンゴ等', '白い粉＝新鮮さの証（農薬ではない！）', '水分蒸発を防ぐ天然成分'] },
+                { title: 'ブルーム ※果粉', icon: '🌫️', color: 'purple', effects: ['ブドウ・ブルーベリー・スモモ・リンゴ等', '白い粉＝新鮮さの証（農薬ではない！）', '水分蒸発を防ぐ天然成分'] },
                 { title: '軸（ヘタ）', icon: '🌿', color: 'orange', effects: ['緑色で瑞々しい', '切り口が変色・乾燥していない'] }
               ]
             }
@@ -540,7 +540,7 @@ const TEXTBOOK = {
             {
               type: 'callout',
               variant: 'tip',
-              title: '褐変（かっぺん）のメカニズム',
+              title: '褐変のメカニズム',
               text: 'リンゴ・バナナを切ると茶色くなる → ポリフェノールが空気に触れ、酵素（PPO）の働きで酸化重合するため。'
             },
             {
@@ -637,7 +637,7 @@ const TEXTBOOK = {
             {
               type: 'cards',
               items: [
-                { title: '剪定（せんてい）', icon: '✂️', color: 'green', effects: ['不要な枝を切除', '樹冠内部まで日光を届ける', '風通し改善で病害虫防止'] },
+                { title: '剪定', icon: '✂️', color: 'green', effects: ['不要な枝を切除', '樹冠内部まで日光を届ける', '風通し改善で病害虫防止'] },
                 { title: '摘花・摘果', icon: '🌸', color: 'pink', effects: ['実が成りすぎると小玉に', '樹勢が衰える（隔年結果の原因）', '適正な数に間引く'] },
                 { title: '袋かけ（有袋栽培）', icon: '🛍️', color: 'yellow', effects: ['病害虫・鳥害・農薬付着を防止', '雨風による傷を防ぐ', '果皮を美しく仕上げる'] }
               ]
@@ -858,7 +858,7 @@ const TEXTBOOK = {
         },
         {
           id: 'ch8-2',
-          title: '変色（褐変）防止の使い分けテクニック',
+          title: '変色・褐変防止の使い分けテクニック',
           tags: ['重要'],
           blocks: [
             {
@@ -988,7 +988,7 @@ const TEXTBOOK = {
                 {
                   fruit: '温州みかん',
                   rank1: 'ヘタ（軸）の切り口が小さく薄い緑色',
-                  rank2: '果皮の油胞（つぶつぶ）が細かく密',
+                  rank2: '果皮の油胞 ※つぶつぶ が細かく密',
                   rank3: '球形よりやや平べったい（扁平）形',
                   varieties: '太い軸は木から水を吸いすぎて大味になりやすい'
                 },
