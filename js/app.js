@@ -299,12 +299,14 @@
             <div class="compare-sublabel">${fgPlain(item.sublabel)}</div>
             <ul>${item.points.map(p => `<li>${fg(p)}</li>`).join('')}</ul>
           </div>`).join('')}</div>`;
-      case 'table':
+      case 'table': {
+        const layoutClass = block.tableLayout ? ` data-table--${block.tableLayout}` : '';
         return `<h3 class="block-title">${fgPlain(block.title)}</h3>
-          <div class="data-table-wrap"><table class="data-table ${block.highlight ? 'highlight' : ''}">
+          <div class="data-table-wrap"><table class="data-table${layoutClass} ${block.highlight ? 'highlight' : ''}">
             <thead><tr>${block.headers.map(h => `<th>${fgPlain(h)}</th>`).join('')}</tr></thead>
             <tbody>${block.rows.map(row => `<tr>${row.map(cell => `<td>${fg(cell)}</td>`).join('')}</tr>`).join('')}</tbody>
           </table></div>`;
+      }
       case 'chart': {
         const max = Math.max(...block.items.map(i => i.value));
         return `<h3 class="block-title">${fgPlain(block.title)}</h3><div class="bar-chart">

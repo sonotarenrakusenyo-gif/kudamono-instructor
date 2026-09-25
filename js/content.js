@@ -270,6 +270,7 @@ const TEXTBOOK = {
             {
               type: 'table',
               title: '図表1-7 主なミネラルの種類と特性',
+              tableLayout: 'ref4col-mineral',
               headers: ['種類（元素記号）', '特性', '多く含む食品', '主な欠乏症'],
               highlight: true,
               rows: [

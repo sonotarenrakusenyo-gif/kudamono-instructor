@@ -699,6 +699,41 @@ rt {
 .data-table tr:nth-child(even) { background: var(--color-bg-warm); }
 .data-table.highlight tbody tr:hover { background: #e8f5e9; }
 
+/* 図表1-7 など：種類列を詰め、特性列を広げる */
+.data-table--ref4col-mineral {
+  table-layout: fixed;
+}
+
+.data-table--ref4col-mineral th,
+.data-table--ref4col-mineral td {
+  white-space: normal;
+  word-break: break-word;
+  vertical-align: top;
+}
+
+.data-table--ref4col-mineral th:nth-child(1),
+.data-table--ref4col-mineral td:nth-child(1) {
+  width: 9%;
+  padding-left: 0.65rem;
+  padding-right: 0.45rem;
+  font-size: 0.84rem;
+}
+
+.data-table--ref4col-mineral th:nth-child(2),
+.data-table--ref4col-mineral td:nth-child(2) {
+  width: 42%;
+}
+
+.data-table--ref4col-mineral th:nth-child(3),
+.data-table--ref4col-mineral td:nth-child(3) {
+  width: 22%;
+}
+
+.data-table--ref4col-mineral th:nth-child(4),
+.data-table--ref4col-mineral td:nth-child(4) {
+  width: 27%;
+}
+
 /* Bar chart */
 .bar-chart { margin: 1.25rem 0; }
 
