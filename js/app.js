@@ -354,6 +354,14 @@
             </div>
             ${item.varieties ? `<div class="ranking-varieties">品種：${fg(item.varieties)}</div>` : ''}
           </div>`).join('')}</div>`;
+      case 'image':
+        return `<figure class="content-figure">
+          ${block.title ? `<h3 class="block-title">${fgPlain(block.title)}</h3>` : ''}
+          <div class="content-figure-inner">
+            <img src="${esc(block.src)}" alt="${esc(block.alt || block.title || '')}" loading="lazy"${block.width ? ` width="${esc(String(block.width))}"` : ''}${block.height ? ` height="${esc(String(block.height))}"` : ''}>
+          </div>
+          ${block.caption ? `<figcaption class="content-figure-caption">${fg(block.caption)}</figcaption>` : ''}
+        </figure>`;
       case 'diagram':
         return `<h3 class="block-title">${fgPlain(block.title)}</h3>${fg(block.svg)}`;
       case 'list':

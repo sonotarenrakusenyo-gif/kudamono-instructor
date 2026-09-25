@@ -59,6 +59,13 @@ const TEXTBOOK = {
           blocks: [
             { type: 'lead', text: '真果と偽果の区別、そして6つの果実分類体系は暗記必須です。代表例とセットで覚えましょう。' },
             {
+              type: 'image',
+              title: '花の構造と子房・花托・萼の図解',
+              src: 'images/ch1-flower-structure.jpg',
+              alt: '花の断面図。柱頭・花柱・雌しべ・雄しべ・子房・子房壁・胚珠・花弁・萼・萼片・花托がラベル付きで示されている。',
+              caption: '真果は子房が肥大して果実になる。偽果（仁果類）は花托が肥大するため、図の花托の位置を意識して覚えること。'
+            },
+            {
               type: 'diagram',
               title: '真果 vs 偽果',
               svg: `
