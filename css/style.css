@@ -726,7 +726,11 @@ rt {
   overflow-wrap: anywhere;
 }
 
-.data-table.layout-wide-characteristics th:nth-child(2),
+.data-table.layout-wide-characteristics th:nth-child(2) {
+  min-width: 11rem;
+  /* 見出しは th の緑背景＋白文字のまま（td 用の薄背景を th に当てない） */
+}
+
 .data-table.layout-wide-characteristics td:nth-child(2) {
   min-width: 11rem;
   background: rgba(45, 106, 79, 0.04);
