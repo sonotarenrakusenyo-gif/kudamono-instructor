@@ -235,7 +235,7 @@ body {
 }
 
 .page-container {
-  max-width: 860px;
+  max-width: 920px;
   margin: 0 auto;
   padding: 2rem 1.5rem 4rem;
 }
@@ -698,6 +698,82 @@ rt {
 .data-table tr:last-child td { border-bottom: none; }
 .data-table tr:nth-child(even) { background: var(--color-bg-warm); }
 .data-table.highlight tbody tr:hover { background: #e8f5e9; }
+
+/* 図表1-6・1-7など「特性」列が長い表 */
+.data-table-wrap--wide-characteristics {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.data-table.layout-wide-characteristics {
+  table-layout: fixed;
+  width: 100%;
+  min-width: 36rem;
+  font-size: 0.9rem;
+}
+
+.data-table.layout-wide-characteristics col.col-type { width: 13%; }
+.data-table.layout-wide-characteristics col.col-char { width: 40%; }
+.data-table.layout-wide-characteristics col.col-food { width: 24%; }
+.data-table.layout-wide-characteristics col.col-def { width: 23%; }
+
+.data-table.layout-wide-characteristics th,
+.data-table.layout-wide-characteristics td {
+  white-space: normal;
+  vertical-align: top;
+  line-height: 1.65;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.data-table.layout-wide-characteristics th:nth-child(2),
+.data-table.layout-wide-characteristics td:nth-child(2) {
+  min-width: 11rem;
+  background: rgba(45, 106, 79, 0.04);
+}
+
+.data-table.layout-wide-characteristics tbody tr:nth-child(even) td:nth-child(2) {
+  background: rgba(45, 106, 79, 0.07);
+}
+
+.data-table.layout-wide-characteristics th:first-child,
+.data-table.layout-wide-characteristics td:first-child {
+  font-weight: 600;
+}
+
+/* 欠乏症逆引きなど1列目が長い3列表 */
+.data-table.layout-wide-keywords {
+  table-layout: fixed;
+  width: 100%;
+  min-width: 28rem;
+}
+
+.data-table.layout-wide-keywords col.col-keywords { width: 42%; }
+.data-table.layout-wide-keywords col.col-answer { width: 18%; }
+.data-table.layout-wide-keywords col.col-memo { width: 40%; }
+
+.data-table.layout-wide-keywords th,
+.data-table.layout-wide-keywords td {
+  white-space: normal;
+  vertical-align: top;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+@media (max-width: 480px) {
+  .data-table.layout-wide-characteristics {
+    min-width: 42rem;
+  }
+
+  .data-table-wrap--wide-characteristics::after {
+    content: '← 横にスクロールできます →';
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    padding: 0.35rem 0 0;
+  }
+}
 
 /* Bar chart */
 .bar-chart { margin: 1.25rem 0; }

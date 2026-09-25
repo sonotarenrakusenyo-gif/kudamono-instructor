@@ -285,6 +285,34 @@
     bindNavEvents();
   }
 
+  // ===== Table layout helpers =====
+  function inferTableLayout(headers) {
+    if (!headers || !headers.length) return '';
+    if (headers[1] === '特性') return 'wide-characteristics';
+    const first = String(headers[0]);
+    if (headers.length === 3 && first.includes('欠乏症')) return 'wide-keywords';
+    return '';
+  }
+
+  function renderTableColgroup(layout) {
+    if (layout === 'wide-characteristics') {
+      return `<colgroup>
+        <col class="col-type">
+        <col class="col-char">
+        <col class="col-food">
+        <col class="col-def">
+      </colgroup>`;
+    }
+    if (layout === 'wide-keywords') {
+      return `<colgroup>
+        <col class="col-keywords">
+        <col class="col-answer">
+        <col class="col-memo">
+      </colgroup>`;
+    }
+    return '';
+  }
+
   // ===== Block Renderers =====
   function renderBlock(block) {
     switch (block.type) {
@@ -299,12 +327,17 @@
             <div class="compare-sublabel">${fgPlain(item.sublabel)}</div>
             <ul>${item.points.map(p => `<li>${fg(p)}</li>`).join('')}</ul>
           </div>`).join('')}</div>`;
-      case 'table':
+      case 'table': {
+        const layout = block.layout || inferTableLayout(block.headers);
+        const layoutClass = layout ? ` layout-${layout}` : '';
+        const colgroup = renderTableColgroup(layout);
         return `<h3 class="block-title">${fgPlain(block.title)}</h3>
-          <div class="data-table-wrap"><table class="data-table ${block.highlight ? 'highlight' : ''}">
+          <div class="data-table-wrap${layout ? ` data-table-wrap--${layout}` : ''}"><table class="data-table ${block.highlight ? 'highlight' : ''}${layoutClass}">
+            ${colgroup}
             <thead><tr>${block.headers.map(h => `<th>${fgPlain(h)}</th>`).join('')}</tr></thead>
             <tbody>${block.rows.map(row => `<tr>${row.map(cell => `<td>${fg(cell)}</td>`).join('')}</tr>`).join('')}</tbody>
           </table></div>`;
+      }
       case 'chart': {
         const max = Math.max(...block.items.map(i => i.value));
         return `<h3 class="block-title">${fgPlain(block.title)}</h3><div class="bar-chart">
