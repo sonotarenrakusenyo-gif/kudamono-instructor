@@ -992,6 +992,15 @@ rt {
   padding: 0.25rem 0.65rem;
   border-radius: 20px;
   font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.fruit-tag ruby rt,
+.ranking-varieties ruby rt,
+.timeline-era ruby rt,
+.info-card-title ruby rt {
+  font-size: 0.48em;
+  letter-spacing: 0;
 }
 
 /* Ranking cards */
