@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 280" role="img" aria-label="Smile cut for citrus">
+  <rect width="520" height="280" fill="#fffbf5"/>
+  <text x="260" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">Smile cut (citrus)</text>
+  <text x="90" y="52" text-anchor="middle" font-size="12" fill="#666">1. Trim ends</text>
+  <circle cx="90" cy="120" r="42" fill="#ff9a3c" stroke="#e07020" stroke-width="2"/>
+  <line x1="48" y1="120" x2="132" y2="120" stroke="#fff" stroke-width="3"/>
+  <text x="260" y="52" text-anchor="middle" font-size="12" fill="#666">2. Wedge segments</text>
+  <path d="M260,88 L295,148 L225,148 Z" fill="#ff9a3c" stroke="#e07020" stroke-width="2"/>
+  <text x="430" y="52" text-anchor="middle" font-size="12" fill="#666">3. Remove pith</text>
+  <path d="M398,88 L433,148 L363,148 Z" fill="#ffb86a" stroke="#e07020" stroke-width="2"/>
+  <path d="M396,96 L402,140" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+  <path d="M393,98 L403,136" fill="none" stroke="#c44" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="430" y="168" text-anchor="middle" font-size="10" fill="#c44">thin slice</text>
+  <text x="260" y="175" text-anchor="middle" font-size="12" fill="#666">4. Smile shape to eat</text>
+  <path d="M210,215 Q260,175 310,215 Q260,235 210,215 Z" fill="#ff9a3c" stroke="#e07020" stroke-width="2"/>
+  <path d="M225,208 Q260,188 295,208" fill="none" stroke="#fff" stroke-width="3"/>
+  <circle cx="242" cy="202" r="3" fill="#333"/><circle cx="278" cy="202" r="3" fill="#333"/>
+</svg>
