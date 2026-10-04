@@ -386,6 +386,7 @@
               ${item.rank3 ? `<span class="rank-badge">🥉 ${fg(item.rank3)}</span>` : ''}
             </div>
             ${item.varieties ? `<div class="ranking-varieties">品種：${fg(item.varieties)}</div>` : ''}
+            ${item.link ? `<div class="ranking-link"><a href="${esc(item.link.href)}" target="_blank" rel="noopener noreferrer">${fgPlain(item.link.label)}</a></div>` : ''}
           </div>`).join('')}</div>`;
       case 'image':
         return `<figure class="content-figure">
