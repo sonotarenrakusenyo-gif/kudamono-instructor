@@ -154,6 +154,11 @@ const TEXTBOOK = {
               type: 'chart',
               title: 'カロリー比較（可食部100gあたり）',
               unit: 'kcal',
+              colorScale: {
+                lowLabel: 'カロリー少なめ',
+                highLabel: 'カロリー多め',
+                note: 'この図に載せた8種類のなかでの比較です。バーの長さと色（緑→オレンジ）の両方が、100gあたりのカロリーの量を表します。'
+              },
               items: [
                 { label: 'アボカド', value: 178, note: '脂質・オレイン酸豊富、果物中最高' },
                 { label: 'バナナ', value: 93, note: '糖質22.5g、持続的エネルギー' },
