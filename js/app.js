@@ -339,34 +339,19 @@
           </table></div>`;
       }
       case 'chart': {
-        const values = block.items.map(i => i.value);
-        const max = Math.max(...values);
-        const min = Math.min(...values);
-        const span = max - min || 1;
-        const scale = block.colorScale;
-        const legendHtml = scale ? `
-          <div class="chart-legend" role="note">
-            <div class="chart-legend-scale">
-              <span class="chart-legend-swatch chart-legend-swatch--low" aria-hidden="true"></span>
-              <span>${fgPlain(scale.lowLabel || '少ない')}</span>
-              <span class="chart-legend-gradient" aria-hidden="true" title="カロリー量の目安"></span>
-              <span class="chart-legend-swatch chart-legend-swatch--high" aria-hidden="true"></span>
-              <span>${fgPlain(scale.highLabel || '多い')}</span>
-            </div>
-            ${scale.note ? `<p class="chart-legend-note">${fg(scale.note)}</p>` : ''}
-          </div>` : '';
+        const max = Math.max(...block.items.map(i => i.value));
+        const captionHtml = block.caption
+          ? `<p class="chart-caption">${fg(block.caption)}</p>`
+          : '';
         return `<h3 class="block-title">${fgPlain(block.title)}</h3><div class="bar-chart">
-          ${block.items.map(item => {
-            const level = ((item.value - min) / span).toFixed(3);
-            return `
+          ${block.items.map(item => `
             <div class="bar-item">
               <span class="bar-label">${fgPlain(item.label)}</span>
-              <div class="bar-track"><div class="bar-fill" style="width:${(item.value / max * 100).toFixed(1)}%;--bar-level:${level}"></div></div>
+              <div class="bar-track"><div class="bar-fill" style="width:${(item.value / max * 100).toFixed(1)}%"></div></div>
               <span class="bar-value">${item.value}${block.unit || ''}</span>
               ${item.note ? `<span class="bar-note">${fg(item.note)}</span>` : ''}
-            </div>`;
-          }).join('')}
-        </div>${legendHtml}`;
+            </div>`).join('')}
+        </div>${captionHtml}`;
       }
       case 'cards':
         return `${block.title ? `<h3 class="block-title">${fgPlain(block.title)}</h3>` : ''}<div class="info-cards">${block.items.map(card => `
