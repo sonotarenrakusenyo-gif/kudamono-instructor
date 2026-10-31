@@ -319,6 +319,29 @@
     return Number(value).toFixed(1);
   }
 
+  /** 旬カレンダー：文字列または { label, badge?, span? } */
+  function renderFruitTag(fruit) {
+    if (typeof fruit === 'string') {
+      return `<span class="fruit-tag">${fgPlain(fruit)}</span>`;
+    }
+    const label = fgPlain(fruit.label);
+    const badge = fruit.badge
+      ? `<span class="fruit-badge">${fgPlain(fruit.badge)}</span>`
+      : '';
+    const span = fruit.span
+      ? `<span class="fruit-span">${fgPlain(fruit.span)}</span>`
+      : '';
+    return `<span class="fruit-tag${fruit.span ? ' fruit-tag--has-span' : ''}">${label}${badge}${span}</span>`;
+  }
+
+  function renderMonthContinues(names) {
+    if (!names || !names.length) return '';
+    return `<div class="month-continues">${names.map((name) => {
+      const label = typeof name === 'string' ? name : name.label;
+      return `<span class="fruit-continue">${fgPlain(label)}<span class="fruit-continue-mark">継続</span></span>`;
+    }).join('')}</div>`;
+  }
+
   function renderNutritionCompare(block) {
     const nutrients = block.nutrients || [];
     const maxByKey = {};
@@ -418,7 +441,10 @@
           ${block.months.map(m => `
             <div class="month-block">
               <div class="month-label">${m.month}月</div>
-              <div class="month-fruits">${m.fruits.map(f => `<span class="fruit-tag">${fgPlain(f)}</span>`).join('')}</div>
+              <div class="month-fruits">
+                ${m.fruits.map((f) => renderFruitTag(f)).join('')}
+                ${renderMonthContinues(m.continues)}
+              </div>
             </div>`).join('')}
         </div>`;
       case 'ranking':
