@@ -736,6 +736,15 @@ rt {
   background: rgba(45, 106, 79, 0.04);
 }
 
+/* 図表1-6・1-7「特性」列：試験で特に押さえる語句 */
+.trait-key {
+  text-decoration: underline;
+  text-decoration-color: #c45c26;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
+
 .data-table.layout-wide-characteristics tbody tr:nth-child(even) td:nth-child(2) {
   background: rgba(45, 106, 79, 0.07);
 }
