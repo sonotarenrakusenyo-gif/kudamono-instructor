@@ -313,6 +313,46 @@
     return '';
   }
 
+  function formatNutrientAmount(value, unit) {
+    if (unit === 'kcal' || unit === 'mg') return String(Math.round(value));
+    if (Number.isInteger(value) || value >= 10) return String(value);
+    return Number(value).toFixed(1);
+  }
+
+  function renderNutritionCompare(block) {
+    const nutrients = block.nutrients || [];
+    const maxByKey = {};
+    nutrients.forEach(n => {
+      maxByKey[n.key] = Math.max(...block.items.map(it => Number(it[n.key]) || 0), 0.001);
+    });
+    const legendHtml = nutrients.length
+      ? `<div class="nutrition-legend">${nutrients.map(n => `
+          <span class="nutrition-legend-item"><span class="metric-fill metric-fill--${n.tone || n.key}" aria-hidden="true"></span>${fgPlain(n.label)}</span>`).join('')}</div>`
+      : '';
+    const cardsHtml = block.items.map(item => {
+      const metricsHtml = nutrients.map(n => {
+        const raw = Number(item[n.key]) || 0;
+        const pct = (raw / maxByKey[n.key] * 100).toFixed(1);
+        const amount = formatNutrientAmount(raw, n.unit);
+        return `
+          <div class="nutrition-metric">
+            <span class="nutrition-metric-label">${fgPlain(n.label)}</span>
+            <div class="metric-bar-track"><div class="metric-fill metric-fill--${n.tone || n.key}" style="width:${pct}%"></div></div>
+            <span class="nutrition-metric-value">${amount}<span class="nutrition-metric-unit">${fgPlain(n.unit)}</span></span>
+          </div>`;
+      }).join('');
+      return `
+        <article class="nutrition-card">
+          <h4 class="nutrition-card-title">${fgPlain(item.label)}</h4>
+          ${metricsHtml}
+          ${item.note ? `<p class="nutrition-card-note">${fg(item.note)}</p>` : ''}
+        </article>`;
+    }).join('');
+    const captionHtml = block.caption ? `<p class="chart-caption">${fg(block.caption)}</p>` : '';
+    return `<h3 class="block-title">${fgPlain(block.title)}</h3>
+      <div class="nutrition-compare">${legendHtml}<div class="nutrition-compare-grid">${cardsHtml}</div>${captionHtml}</div>`;
+  }
+
   // ===== Block Renderers =====
   function renderBlock(block) {
     switch (block.type) {
@@ -338,8 +378,13 @@
             <tbody>${block.rows.map(row => `<tr>${row.map(cell => `<td>${fg(cell)}</td>`).join('')}</tr>`).join('')}</tbody>
           </table></div>`;
       }
+      case 'nutritionCompare':
+        return renderNutritionCompare(block);
       case 'chart': {
         const max = Math.max(...block.items.map(i => i.value));
+        const captionHtml = block.caption
+          ? `<p class="chart-caption">${fg(block.caption)}</p>`
+          : '';
         return `<h3 class="block-title">${fgPlain(block.title)}</h3><div class="bar-chart">
           ${block.items.map(item => `
             <div class="bar-item">
@@ -348,7 +393,7 @@
               <span class="bar-value">${item.value}${block.unit || ''}</span>
               ${item.note ? `<span class="bar-note">${fg(item.note)}</span>` : ''}
             </div>`).join('')}
-        </div>`;
+        </div>${captionHtml}`;
       }
       case 'cards':
         return `${block.title ? `<h3 class="block-title">${fgPlain(block.title)}</h3>` : ''}<div class="info-cards">${block.items.map(card => `
