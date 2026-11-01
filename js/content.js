@@ -716,23 +716,24 @@ const TEXTBOOK = {
       sections: [
         {
           id: 'ch4-1',
-          title: '都道府県別の収穫量ランキング（主要品目）',
+          title: '都道府県別の収穫量ランキング（主要品目・令和7年産）',
           tags: ['必須', '試験頻出'],
           blocks: [
-            { type: 'lead', text: '「第1位はどこ？」は試験の定番問題。主要品目の1位県を確実に暗記しましょう。' },
+            { type: 'lead', text: '「第1位はどこ？」は試験の定番問題。主要品目の1位県を確実に暗記しましょう。順位は農林水産省「果樹生産出荷統計」の最新値（下記の調査年）に基づきます。' },
             {
               type: 'ranking',
+              caption: '調査年：令和7年産（2026年11月時点・第1報概数。確報は同年12月下旬予定）。リンゴ〜ウメは収穫量順位、温州みかんは「普通温州」の収穫量。スイカ・メロン・マンゴー・サクランボは果樹統計の対象外のため従来どおりの目安（更新なし）。',
               items: [
-                { fruit: 'リンゴ', rank1: '青森県（約6割）', rank2: '長野県', rank3: '岩手県', varieties: 'ふじ、王林、つがる、シナノゴールド' },
+                { fruit: 'リンゴ', rank1: '青森県（約61%）', rank2: '長野県', rank3: '岩手県', varieties: 'ふじ、王林、つがる、シナノゴールド' },
                 { fruit: 'ブドウ', rank1: '山梨県', rank2: '長野県', rank3: '岡山県・山形県', varieties: 'シャインマスカット、巨峰、ピオーネ、甲州' },
-                { fruit: 'モモ', rank1: '山梨県', rank2: '福島県', rank3: '長野・和歌山', varieties: '白鳳、あかつき、川中島白桃' },
+                { fruit: 'モモ', rank1: '山梨県', rank2: '福島県', rank3: '長野県', varieties: '白鳳、あかつき、川中島白桃' },
                 { fruit: 'サクランボ', rank1: '山形県（約7割）', rank2: '', rank3: '', varieties: '佐藤錦、紅秀峰' },
-                { fruit: '西洋梨', rank1: '山形県', rank2: '新潟県', rank3: '', varieties: 'ラ・フランス、ル・レクチェ' },
-                { fruit: '和梨', rank1: '千葉県', rank2: '茨城・栃木・鳥取', rank3: '', varieties: '二十世紀梨（鳥取）' },
-                { fruit: '温州みかん', rank1: '和歌山県', rank2: '愛媛県', rank3: '静岡県', varieties: '有田みかん、三ヶ日みかん' },
+                { fruit: '西洋梨', rank1: '山形県', rank2: '青森県', rank3: '新潟県', varieties: 'ラ・フランス、ル・レクチェ' },
+                { fruit: '和梨', rank1: '千葉県', rank2: '茨城県・栃木県', rank3: '福島県', varieties: '二十世紀梨（鳥取）' },
+                { fruit: '温州みかん', rank1: '静岡県', rank2: '和歌山県', rank3: '愛媛県', varieties: '有田みかん、三ヶ日みかん' },
                 { fruit: '柿', rank1: '和歌山県', rank2: '奈良県', rank3: '福岡県', varieties: '富有、平核無' },
-                { fruit: 'スモモ', rank1: '山梨県', rank2: '長野・和歌山', rank3: '', varieties: '大石早生、貴陽' },
-                { fruit: 'ウメ', rank1: '和歌山県（約6割）', rank2: '', rank3: '', varieties: '南高梅' },
+                { fruit: 'スモモ', rank1: '山梨県', rank2: '長野県', rank3: '山形県', varieties: '大石早生、貴陽' },
+                { fruit: 'ウメ', rank1: '和歌山県（約58%）', rank2: '群馬県', rank3: '福井県', varieties: '南高梅' },
                 { fruit: 'スイカ', rank1: '熊本県', rank2: '千葉県', rank3: '山形県', varieties: '熊本・植木町' },
                 { fruit: 'メロン', rank1: '茨城県', rank2: '熊本・北海道', rank3: '静岡（温室）', varieties: 'マスクメロン' },
                 { fruit: 'マンゴー', rank1: '沖縄県', rank2: '宮崎県', rank3: '鹿児島県', varieties: '太陽のタマゴ、アーウィン種' }
@@ -742,7 +743,7 @@ const TEXTBOOK = {
               type: 'callout',
               variant: 'important',
               title: '暗記の優先順位',
-              text: '最優先：リンゴ→青森、サクランボ→山形、温州みかん→和歌山、ウメ→和歌山。次に：ブドウ・モモ→山梨、和梨→千葉。'
+              text: '最優先：リンゴ→青森、サクランボ→山形、温州みかん→静岡（2位・和歌山）、ウメ→和歌山。次に：ブドウ・モモ→山梨、和梨→千葉。'
             }
           ]
         },

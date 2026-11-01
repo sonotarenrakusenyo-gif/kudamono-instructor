@@ -447,8 +447,11 @@
               </div>
             </div>`).join('')}
         </div>`;
-      case 'ranking':
-        return `<div class="ranking-grid">${block.items.map(item => `
+      case 'ranking': {
+        const captionHtml = block.caption
+          ? `<p class="chart-caption">${fg(block.caption)}</p>`
+          : '';
+        return `${captionHtml}<div class="ranking-grid">${block.items.map(item => `
           <div class="ranking-card">
             <div class="ranking-fruit">🍎 ${fgPlain(item.fruit)}</div>
             <div class="ranking-ranks">
@@ -459,6 +462,7 @@
             ${item.varieties ? `<div class="ranking-varieties">品種：${fg(item.varieties)}</div>` : ''}
             ${item.link ? `<div class="ranking-link"><a href="${esc(item.link.href)}" target="_blank" rel="noopener noreferrer">${fgPlain(item.link.label)}</a></div>` : ''}
           </div>`).join('')}</div>`;
+      }
       case 'image':
         return `<figure class="content-figure">
           ${block.title ? `<h3 class="block-title">${fgPlain(block.title)}</h3>` : ''}
