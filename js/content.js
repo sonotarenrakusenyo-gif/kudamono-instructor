@@ -730,7 +730,7 @@ const TEXTBOOK = {
                 { fruit: 'サクランボ', rank1: '山形県（約7割）', rank2: '', rank3: '', varieties: '佐藤錦、紅秀峰' },
                 { fruit: '西洋梨', rank1: '山形県（ラ・フランス）', rank2: '青森県（洋梨のみ・収穫量2位）', rank3: '新潟県（ル・レクチェ）', varieties: '※青森＝リンゴ1位とは別枠。試験の名産は山形・新潟' },
                 { fruit: '和梨', rank1: '千葉県', rank2: '茨城県・栃木県', rank3: '福島県', varieties: '二十世紀梨（鳥取・名産。収穫量順位5位前後）' },
-                { fruit: '温州みかん', rank1: '静岡県', rank2: '和歌山県', rank3: '愛媛県', varieties: '有田みかん、三ヶ日みかん' },
+                { fruit: '温州みかん', rank1: '静岡県', rank2: '和歌山県', rank3: '愛媛県', varieties: '上表＝普通温州のみ。有田＝和歌山、三ヶ日＝静岡、愛媛みかん＝愛媛' },
                 { fruit: '柿', rank1: '和歌山県', rank2: '奈良県', rank3: '福岡県', varieties: '富有、平核無' },
                 { fruit: 'スモモ', rank1: '山梨県', rank2: '長野県', rank3: '山形県', varieties: '大石早生、貴陽' },
                 { fruit: 'ウメ', rank1: '和歌山県（約58%）', rank2: '群馬県', rank3: '福井県', varieties: '南高梅' },
@@ -738,6 +738,12 @@ const TEXTBOOK = {
                 { fruit: 'メロン', rank1: '茨城県', rank2: '熊本・北海道', rank3: '静岡（温室）', varieties: 'マスクメロン' },
                 { fruit: 'マンゴー', rank1: '沖縄県', rank2: '宮崎県', rank3: '鹿児島県', varieties: '太陽のタマゴ、アーウィン種' }
               ]
+            },
+            {
+              type: 'callout',
+              variant: 'important',
+              title: '温州みかんと「みかん」の違い（試験用）',
+              text: '店頭の「みかん」はだいたい<strong>温州みかん</strong>（手で剥く定番のみかん）のこと。統計の<strong>みかん計</strong>は早生温州・普通温州などを足した総称で、収穫量1位は和歌山・2位愛媛（温州みかん表の🥇〜🥉とは別）。<strong>覚え方</strong>：順位は上表どおり（普通温州＝静岡・和歌山・愛媛）／名産は有田→和歌山・三ヶ日→静岡・愛媛みかん→愛媛／「みかん全体で1位」→和歌山。'
             },
             {
               type: 'callout',
