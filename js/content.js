@@ -729,7 +729,7 @@ const TEXTBOOK = {
                 { fruit: 'モモ', rank1: '山梨県', rank2: '福島県', rank3: '長野県', varieties: '白鳳、あかつき、川中島白桃' },
                 { fruit: 'サクランボ', rank1: '山形県（約7割）', rank2: '', rank3: '', varieties: '佐藤錦、紅秀峰' },
                 { fruit: '西洋梨', rank1: '山形県', rank2: '青森県', rank3: '新潟県', varieties: 'ラ・フランス、ル・レクチェ' },
-                { fruit: '和梨', rank1: '千葉県', rank2: '茨城県・栃木県', rank3: '福島県', varieties: '二十世紀梨（鳥取）' },
+                { fruit: '和梨', rank1: '千葉県', rank2: '茨城県・栃木県', rank3: '福島県', varieties: '二十世紀梨＝鳥取の名産（試験頻出）。収穫量順位は5位前後で、上の🥇〜🥉とは別に暗記' },
                 { fruit: '温州みかん', rank1: '静岡県', rank2: '和歌山県', rank3: '愛媛県', varieties: '有田みかん、三ヶ日みかん' },
                 { fruit: '柿', rank1: '和歌山県', rank2: '奈良県', rank3: '福岡県', varieties: '富有、平核無' },
                 { fruit: 'スモモ', rank1: '山梨県', rank2: '長野県', rank3: '山形県', varieties: '大石早生、貴陽' },
